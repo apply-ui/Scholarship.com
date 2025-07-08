@@ -4,13 +4,13 @@ const cardOutput = document.getElementById('cardOutput');
 const studentNameOutput = document.getElementById('studentNameOutput');
 const codeOutput = document.getElementById('codeOutput');
 
-// ✅ Show form on Apply Now click
+// Show form on Apply
 applyBtn.addEventListener('click', () => {
   form.style.display = 'block';
   form.scrollIntoView({ behavior: 'smooth' });
 });
 
-// ✅ Handle form submission
+// Submit form
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   const name = document.getElementById('student').value;
@@ -22,14 +22,14 @@ form.addEventListener('submit', function(e) {
   cardOutput.scrollIntoView({ behavior: 'smooth' });
 });
 
-// ✅ Reset form
+// Reset
 function resetForm() {
   form.reset();
   cardOutput.style.display = 'none';
   form.style.display = 'none';
 }
 
-// ✅ Download card as image
+// Download card
 function downloadScreenshot() {
   const card = document.getElementById('cardSection');
   html2canvas(card).then(canvas => {
@@ -39,3 +39,4 @@ function downloadScreenshot() {
     link.click();
   });
 }
+
