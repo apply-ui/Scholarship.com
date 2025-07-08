@@ -5,28 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Assam Sports Scholarship</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Header Section -->
+
+  <!-- ✅ Header Image & Text -->
   <div class="top-bar">
-    <img src="play.jpg" alt="Sports Header" class="header-image" />
+    <img src="play.jpg" alt="Sports Header" />
     <div class="header-text">
-      <span>ASSAM DISTRICT</span>
+      <span>ASSAM DISTRICT</span><br>
       <span>SPORTS SCHOLARSHIP</span>
     </div>
   </div>
 
-  <!-- Disclaimer -->
+  <!-- ✅ Scrolling Disclaimer -->
   <div class="disclaimer-strip">
     <span>Available for Class 1 to 12 students only | District-level opportunity | Apply Fee ₹100 | Fill the form carefully and upload valid proof</span>
   </div>
 
-  <!-- Main Section -->
+  <!-- ✅ Main Section with Background -->
   <div class="main-content">
-    <!-- Motivation -->
+    <!-- Motivation Line -->
     <div class="motivation" id="motivationLine">
       <span class="word">অসমৰ</span>
       <span class="word">ঘৰ</span>
@@ -37,11 +38,13 @@
       <span class="word">উদ্দেশ্য।</span>
     </div>
 
-    <!-- Apply Button -->
-    <button id="applyBtn" class="apply-button">Apply Now</button>
+    <!-- ✅ Apply Button -->
+    <div style="text-align: center;">
+      <button id="applyBtn" class="apply-button">Apply Now</button>
+    </div>
 
-    <!-- Form Section -->
-    <form id="scholarshipForm" class="form-section">
+    <!-- ✅ Hidden Form -->
+    <form id="scholarshipForm">
       <label for="district">District</label>
       <input type="text" id="district" required>
 
@@ -86,7 +89,7 @@
       <button type="submit" class="submit-btn">Submit Form</button>
     </form>
 
-    <!-- Output Card -->
+    <!-- ✅ Code Card -->
     <div class="card-output" id="cardOutput">
       <div id="cardSection">
         <h2>Scholarship Code Generated!</h2>
@@ -97,10 +100,11 @@
       <button onclick="resetForm()" class="done-btn">Done</button>
     </div>
 
-    <!-- Footer -->
+    <!-- ✅ Footer -->
     <footer>
       Already 1,00,000+ students applied successfully.
     </footer>
   </div>
+
 </body>
 </html>
