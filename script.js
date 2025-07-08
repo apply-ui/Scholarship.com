@@ -1,51 +1,35 @@
+const applyBtn = document.getElementById('applyBtn');
 const form = document.getElementById('scholarshipForm');
 const cardOutput = document.getElementById('cardOutput');
 const studentNameOutput = document.getElementById('studentNameOutput');
 const codeOutput = document.getElementById('codeOutput');
-const applyBtn = document.getElementById('applyBtn');
-const motivationWords = document.querySelectorAll('.word');
 
-// Show form on apply
+// ✅ Show form on Apply Now click
 applyBtn.addEventListener('click', () => {
+  form.style.display = 'block';
   form.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Animate motivation words
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight / 1.3;
-  motivationWords.forEach((word, index) => {
-    const top = word.getBoundingClientRect().top;
-    if (top < trigger && !word.classList.contains('visible')) {
-      setTimeout(() => {
-        word.classList.add('visible');
-      }, index * 120);
-    }
-  });
-});
-
-// Form submit
+// ✅ Handle form submission
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  const studentName = document.getElementById('student').value;
-  const randomCode = 'ASGS' + Math.floor(10000 + Math.random() * 90000);
-
-  studentNameOutput.textContent = 'Student: ' + studentName;
-  codeOutput.textContent = randomCode;
-
+  const name = document.getElementById('student').value;
+  const code = 'ASGS' + Math.floor(10000 + Math.random() * 90000);
+  studentNameOutput.textContent = 'Student: ' + name;
+  codeOutput.textContent = code;
   form.style.display = 'none';
   cardOutput.style.display = 'block';
   cardOutput.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Reset form
+// ✅ Reset form
 function resetForm() {
-  document.getElementById('scholarshipForm').reset();
-  form.style.display = 'block';
+  form.reset();
   cardOutput.style.display = 'none';
-  form.scrollIntoView({ behavior: 'smooth' });
+  form.style.display = 'none';
 }
 
-// Download card
+// ✅ Download card as image
 function downloadScreenshot() {
   const card = document.getElementById('cardSection');
   html2canvas(card).then(canvas => {
