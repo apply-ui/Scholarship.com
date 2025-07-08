@@ -1,13 +1,29 @@
-// script.js
-document.getElementById('applyBtn').addEventListener('click', () => {
-  document.getElementById('scholarshipForm').scrollIntoView({ behavior: 'smooth' });
-});
-
 const form = document.getElementById('scholarshipForm');
 const cardOutput = document.getElementById('cardOutput');
 const studentNameOutput = document.getElementById('studentNameOutput');
 const codeOutput = document.getElementById('codeOutput');
+const applyBtn = document.getElementById('applyBtn');
+const motivationWords = document.querySelectorAll('.word');
 
+// Show form on apply
+applyBtn.addEventListener('click', () => {
+  form.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Animate motivation words
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight / 1.3;
+  motivationWords.forEach((word, index) => {
+    const top = word.getBoundingClientRect().top;
+    if (top < trigger && !word.classList.contains('visible')) {
+      setTimeout(() => {
+        word.classList.add('visible');
+      }, index * 120);
+    }
+  });
+});
+
+// Form submit
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   const studentName = document.getElementById('student').value;
@@ -18,14 +34,18 @@ form.addEventListener('submit', function(e) {
 
   form.style.display = 'none';
   cardOutput.style.display = 'block';
+  cardOutput.scrollIntoView({ behavior: 'smooth' });
 });
 
+// Reset form
 function resetForm() {
   document.getElementById('scholarshipForm').reset();
-  cardOutput.style.display = 'none';
   form.style.display = 'block';
+  cardOutput.style.display = 'none';
+  form.scrollIntoView({ behavior: 'smooth' });
 }
 
+// Download card
 function downloadScreenshot() {
   const card = document.getElementById('cardSection');
   html2canvas(card).then(canvas => {
