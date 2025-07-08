@@ -1,45 +1,223 @@
-const applyBtn = document.getElementById('applyBtn');
-const form = document.getElementById('scholarshipForm');
-const cardOutput = document.getElementById('cardOutput');
-const studentNameOutput = document.getElementById('studentNameOutput');
-const codeOutput = document.getElementById('codeOutput');
-
-// ✅ Apply button click → show form
-applyBtn.addEventListener('click', () => {
-  form.style.display = 'block';
-  form.scrollIntoView({ behavior: 'smooth' });
-});
-
-// ✅ Form submission → generate code
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('student').value;
-  const code = 'ASGS' + Math.floor(10000 + Math.random() * 90000);
-
-  studentNameOutput.textContent = 'Student: ' + name;
-  codeOutput.textContent = code;
-
-  form.style.display = 'none';
-  cardOutput.style.display = 'block';
-  cardOutput.scrollIntoView({ behavior: 'smooth' });
-});
-
-// ✅ Reset everything
-function resetForm() {
-  document.getElementById('scholarshipForm').reset();
-  cardOutput.style.display = 'none';
-  form.style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-// ✅ Download card
-function downloadScreenshot() {
-  const card = document.getElementById('cardSection');
-  html2canvas(card).then(canvas => {
-    const link = document.createElement('a');
-    link.download = 'scholarship_card.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  });
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f2f2f2;
+  color: #111;
 }
+
+/* Header */
+.top-bar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.header-text {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+  line-height: 1.4;
+  max-width: 90%;
+  padding: 10px 20px;
+}
+
+.header-text span {
+  display: block;
+}
+
+/* Disclaimer */
+.disclaimer-strip {
+  background: #f1f1f1;
+  color: #000;
+  padding: 8px 0;
+  font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Main */
+.main-content {
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.motivation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.word {
+  font-weight: 900;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.5s ease;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1px black;
+}
+
+.word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.word:nth-child(1) { background-image: linear-gradient(to right, #ff1744, #f50057); font-size: 2.8rem; }
+.word:nth-child(2) { background-image: linear-gradient(to right, #00bcd4, #1de9b6); font-size: 2.6rem; }
+.word:nth-child(3) { background-image: linear-gradient(to right, #ffca28, #ff8f00); font-size: 2.9rem; }
+.word:nth-child(4) { background-image: linear-gradient(to right, #43a047, #a5d6a7); font-size: 2.7rem; }
+.word:nth-child(5) { background-image: linear-gradient(to right, #ab47bc, #7e57c2); font-size: 3rem; }
+.word:nth-child(6) { background-image: linear-gradient(to right, #ef6c00, #ff7043); font-size: 2.5rem; }
+.word:nth-child(7) { background-image: linear-gradient(to right, #1e88e5, #90caf9); font-size: 2.8rem; }
+
+.apply-button {
+  padding: 14px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(to right, #00c853, #64dd17);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.apply-button:hover {
+  transform: scale(1.05);
+}
+
+/* Form */
+.form-section {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  color: #222;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.info-box {
+  background: #e3f2fd;
+  padding: 12px;
+  border-left: 5px solid #2196f3;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #4caf50;
+  color: white;
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card-output {
+  display: none;
+  background: #fff;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card-output h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.card-output p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 6px 0;
+}
+
+.download-btn, .done-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #03a9f4;
+  color: white;
+}
+
+.done-btn {
+  background: #4caf50;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  text-align: center;
+  color: #fbc02d;
+  font-weight: 600;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px black;
+  font-style: italic;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .word { font-size: 1.6rem !important; }
+  .header-text { font-size: 1.4rem; }
+  .apply-button { font-size: 1rem; padding: 10px 20px; }
+  footer { font-size: 0.9rem; }
+    }
