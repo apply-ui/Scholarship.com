@@ -52,22 +52,16 @@ body {
   padding: 40px 20px;
   position: relative;
   min-height: 100vh;
-}
-.main-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 0;
+  z-index: 1;
 }
 .motivation {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
   margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
 }
 .word {
   font-weight: 900;
@@ -87,7 +81,7 @@ body {
 
 .apply-button {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background: #00c853;
   color: #fff;
   font-size: 1.2rem;
@@ -96,11 +90,14 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 /* Form */
 #scholarshipForm {
   display: none;
+  position: relative;
+  z-index: 2;
 }
 form, .card-output {
   background: white;
@@ -142,17 +139,17 @@ form input, form select {
 .download-btn {
   background: #03a9f4;
 }
-.card-output p {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.card-output {
+  display: none;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
-
-/* Footer */
 footer {
   text-align: center;
   color: #fbc02d;
   font-style: italic;
   margin-top: 40px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
