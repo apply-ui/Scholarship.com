@@ -3,13 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Poppins', sans-serif;
   background: #f2f2f2;
   color: #111;
 }
-
 /* Header */
 .top-bar img {
   width: 100%;
@@ -28,7 +26,7 @@ body {
   line-height: 1.4;
 }
 
-/* ✅ Disclaimer Scroll */
+/* Scrolling disclaimer */
 .disclaimer-strip {
   background: #fff;
   padding: 10px 0;
@@ -36,19 +34,18 @@ body {
   white-space: nowrap;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  position: relative;
 }
 .disclaimer-strip span {
   display: inline-block;
   padding-left: 100%;
-  animation: scrollText 18s linear infinite;
+  animation: scrollText 16s linear infinite;
 }
 @keyframes scrollText {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
-/* Background Section */
+/* Background */
 .main-content {
   background: url('sports.jpg') no-repeat center center;
   background-size: cover;
@@ -63,8 +60,6 @@ body {
   background: rgba(0,0,0,0.5);
   z-index: 0;
 }
-
-/* Motivation */
 .motivation {
   position: relative;
   z-index: 1;
@@ -90,7 +85,6 @@ body {
 .word:nth-child(6) { background-image: linear-gradient(to right, #ef6c00, #ff7043); }
 .word:nth-child(7) { background-image: linear-gradient(to right, #1e88e5, #90caf9); }
 
-/* Apply */
 .apply-button {
   position: relative;
   z-index: 1;
@@ -104,7 +98,7 @@ body {
   cursor: pointer;
 }
 
-/* Form – Hidden by default ✅ */
+/* Form */
 #scholarshipForm {
   display: none;
 }
@@ -162,10 +156,3 @@ footer {
   position: relative;
   z-index: 1;
 }
-
-/* Mobile */
-@media (max-width: 600px) {
-  .header-text { font-size: 1.4rem; }
-  .word { font-size: 1.5rem; }
-                                                       }
-  
